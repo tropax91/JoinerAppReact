@@ -1,0 +1,31 @@
+﻿@model JoinerAppReact.Models.Order
+@{
+    ViewData["Title"] = "OrderConfirmation";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h1 style="color:orange">Order Confirmation</h1>
+    <p><strong>Hello @Model.User.FirstName,</strong></p>
+    <p>This is a confirmation for the following order</p>
+    <p><strong>Order Id: </strong>@Model.Id. <strong>Price: </strong>@Model.Price</p>
+    <table style="width:80%">
+        <tr>
+            <th>Shape</th>
+            <th>Material</th>
+            <th>Quantity</th>
+        </tr>
+        @foreach(JoinerAppReact.Models.OrderLine ol in Model.OrderLine)
+        {
+            <tr>
+                <td>@ol.Shape.Name</td>
+                <td>@ol.Material.Name</td>
+                <td>@ol.Quantity</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
